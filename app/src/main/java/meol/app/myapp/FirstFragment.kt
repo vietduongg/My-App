@@ -40,6 +40,10 @@ class FirstFragment : Fragment() {
             "Jay_Kilback@hotmail.com", "Destiny10@hotmail.com", "Theresa48@hotmail.com"
         )
 
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+
         newRecylerview = binding.recycleViewId
         newRecylerview.layoutManager = LinearLayoutManager(binding.root.context)
         newRecylerview.setHasFixedSize(true)
