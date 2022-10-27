@@ -1,14 +1,16 @@
 package meol.app.myapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import meol.app.myapp.data.Person
+import meol.app.myapp.adapter.RecyclerViewAdapter
+import meol.app.myapp.data.WeatherDay
 import meol.app.myapp.databinding.FragmentFirstBinding
 
 /**
@@ -18,10 +20,8 @@ class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
-    private lateinit var newRecylerview : RecyclerView
-    private lateinit var newArrayList : ArrayList<Person>
-    lateinit var nameArray : Array<String>
-    lateinit var emailArray : Array<String>
+    private lateinit var newRecylerview: androidx.recyclerview.widget.RecyclerView
+    private lateinit var weatherArray: ArrayList<WeatherDay>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,36 +32,82 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        nameArray = arrayOf(
-            "Soledad", "Hershel", "Bria"
-        )
-
-        emailArray = arrayOf(
-            "Jay_Kilback@hotmail.com", "Destiny10@hotmail.com", "Theresa48@hotmail.com"
-        )
+        setDataForWeatherArray()
 
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
 
         newRecylerview = binding.recycleViewId
-        newRecylerview.layoutManager = LinearLayoutManager(binding.root.context)
-        newRecylerview.setHasFixedSize(true)
-        newArrayList = arrayListOf<Person>()
-        getUserData()
+        //newRecylerview.layoutManager = LinearLayoutManager(binding.root.context)
+        val adapter = RecyclerViewAdapter(weatherArray)
+        newRecylerview.adapter = adapter
+        newRecylerview.addItemDecoration(
+            DividerItemDecoration(
+                binding.root.context,
+                LinearLayoutManager.HORIZONTAL
+            )
+        )
+
+        val horizontalLayoutManager =
+            GridLayoutManager(binding.root.context, 3)
+        newRecylerview.layoutManager = horizontalLayoutManager
         return binding.root
 
     }
 
-    private fun getUserData() {
+    private fun setDataForWeatherArray() {
+        val dateData = arrayOf(
+            "Tue, 10 Mar 2020",
+            "Tue, 11 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2022",
+            "Tue, 10 Mar 2020",
+            "Tue, 11 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2022",
+        )
+        val avgTempData = arrayOf(
+            "20℃", "21℃", "22℃", "22℃", "22℃", "22℃", "22℃", "20℃", "21℃", "22℃", "22℃", "22℃", "22℃", "22℃"
+        )
+        val pressureData = arrayOf(
+            "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027"
+        )
+        val humidityData = arrayOf(
+            "72%", "73%", "74%", "74%", "74%", "74%", "74%", "72%", "73%", "74%", "74%", "74%", "74%", "74%"
+        )
+        val descriptionData = arrayOf(
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain","light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain"
+        )
 
-        for(i in nameArray.indices){
-            val person = Person(nameArray[i], emailArray[i])
-            newArrayList.add(person)
-            println(newArrayList.toString())
+        weatherArray = ArrayList()
+
+        for (i in dateData.indices) {
+            val weather = WeatherDay(
+                dateData[i],
+                avgTempData[i],
+                pressureData[i],
+                humidityData[i],
+                descriptionData[i]
+            )
+            weatherArray.add(weather)
         }
-
-        newRecylerview.adapter = MyAdapter(newArrayList)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

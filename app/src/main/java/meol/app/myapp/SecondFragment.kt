@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.NonDisposableHandle.parent
+import meol.app.myapp.adapter.ListViewAdapter
 import meol.app.myapp.data.WeatherDay
 import meol.app.myapp.databinding.FragmentSecondBinding
 
@@ -32,19 +32,42 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
 
         val dateData = arrayOf(
-            "Tue, 10 Mar 2020", "Tue, 11 Mar 2020", "Tue, 12 Mar 2020"
+            "Tue, 10 Mar 2020",
+            "Tue, 11 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2022",
+            "Tue, 10 Mar 2020",
+            "Tue, 11 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2020",
+            "Tue, 12 Mar 2022",
         )
         val avgTempData = arrayOf(
-            "20℃", "21℃", "22℃"
+            "20℃", "21℃", "22℃", "22℃", "22℃", "22℃", "22℃", "20℃", "21℃", "22℃", "22℃", "22℃", "22℃", "22℃"
         )
         val pressureData = arrayOf(
-            "1027", "1027", "1027"
+            "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027", "1027"
         )
         val humidityData = arrayOf(
-            "72%", "73%", "74%"
+            "72%", "73%", "74%", "74%", "74%", "74%", "74%", "72%", "73%", "74%", "74%", "74%", "74%", "74%"
         )
         val descriptionData = arrayOf(
-            "light rain", "light rain", "light rain"
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain","light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain",
+            "light rain"
         )
 
         weatherArrayList = ArrayList()
