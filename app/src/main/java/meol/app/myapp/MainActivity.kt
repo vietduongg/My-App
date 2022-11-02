@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Debug
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -33,10 +34,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         if(haveNetwork()){
-            Snackbar.make(binding.root, "Internet Found", Snackbar.LENGTH_INDEFINITE).show()
+            Toast.makeText(this, "Internet connection is successful", Toast.LENGTH_SHORT).show()
         }
         else {
-            Snackbar.make(binding.root, "Internet Not Found", Snackbar.LENGTH_INDEFINITE).show()
+            Toast.makeText(this, "Internet connection failed", Toast.LENGTH_SHORT).show()
         }
     }
 

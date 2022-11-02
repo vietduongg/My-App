@@ -1,5 +1,6 @@
 package meol.app.myapp.api
 
+import meol.app.myapp.Manager
 import meol.app.myapp.model.Product
 import meol.app.myapp.model.WeatherApiRespon
 import retrofit2.http.*
@@ -9,8 +10,9 @@ public interface ApiInterface {
     @GET("daily")
     fun getData(
         @Query("q") nameOfLocation: String,
+        @Query("units") units: String = "metric",
         @Query("cnt") cnt: Int = 7,
-        @Query("appid") appid: String = "60c6fbeb4b93ac653c492ba806fc32146d",
+        @Query("appid") appid: String = Manager.appid,
     ):
             retrofit2.Call<WeatherApiRespon>
 
