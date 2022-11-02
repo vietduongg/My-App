@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import meol.app.myapp.adapter.ListViewAdapter
-import meol.app.myapp.data.WeatherDay
+import meol.app.myapp.model.WeatherDay
 import meol.app.myapp.databinding.FragmentSecondBinding
 
 /**

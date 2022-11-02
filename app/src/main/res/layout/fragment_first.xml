@@ -7,6 +7,20 @@
     android:orientation="vertical"
     tools:context=".FirstFragment">
 
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Get Weather"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view_id"
         android:layout_width="match_parent"
@@ -20,6 +34,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:text="@string/go_to_list_view"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:visibility="gone"/>
 
 </LinearLayout>
