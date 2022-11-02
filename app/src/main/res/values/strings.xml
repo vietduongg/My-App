@@ -2,12 +2,24 @@
     <string name="app_name">my_app</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label">RecyclerView</string>
+    <string name="second_fragment_label">ListView</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Textview_Template">TextView</string>
+    <string name="button">Button</string>
+    <string name="go_to_list_view">Go To List View</string>
+    <string name="date_textView_templateString">Tue, 10 Mar 2020</string>
+    <string name="avgTemp_textView_templateString">20\'C</string>
+    <string name="pressure_textView_templateString">1931</string>
+    <string name="humidity_textView_templateString">72%</string>
+    <string name="description_textView_templateString">light rain</string>
+    <string name="date_textView_label">Date: </string>
+    <string name="avgTemp_textView_label">Average temperature: </string>
+    <string name="pressure_textView_label">Pressure: </string>
+    <string name="humidity_textView_label">Humidity: </string>
+    <string name="description_textView_label">Description: </string>
 </resources>
