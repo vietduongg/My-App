@@ -36,6 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/avgTemp_textView_templateString" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/metric_label_templateString" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,6 +72,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/humidity_textView_templateString" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/percent_label_templateString" />
 
     </LinearLayout>
 

@@ -6,13 +6,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import meol.app.myapp.R
-import meol.app.myapp.data.Person
-import meol.app.myapp.data.WeatherDay
+import meol.app.myapp.model.ListItem
+import meol.app.myapp.model.WeatherItem
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.math.ceil
 
-class RecyclerViewAdapter(private val peopleList: ArrayList<WeatherDay>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewAdapter(private val weatherApiList: List<ListItem>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
     override fun getItemCount(): Int {
-       return peopleList.size
+       return weatherApiList.size
     }
 
     //create new view
@@ -23,12 +27,18 @@ class RecyclerViewAdapter(private val peopleList: ArrayList<WeatherDay>) : Recyc
 
     //binds the list items to a view    
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = peopleList[position]
-        holder.date.text = currentItem.date
-        holder.avgTemp.text = currentItem.avgTemp
-        holder.desc.text = currentItem.desc
-        holder.humidity.text = currentItem.humnidity
-        holder.pressure.text = currentItem.pressure
+        val currentItem = weatherApiList[position]
+        holder.date.text = covertTime(currentItem.dt)
+        val avgTempAday = currentItem.temp.min + currentItem.temp.max
+        holder.avgTemp.text = ceil(avgTempAday/2).toString()
+        holder.desc.text = currentItem.weather?.get(0)?.description
+        holder.humidity.text = currentItem.humidity.toString()
+        holder.pressure.text = currentItem.pressure.toString()
+    }
+
+    private fun covertTime(number: Int): String? {
+        val simpleDateFormat = SimpleDateFormat("EE, dd MMMM yyyy", Locale.ENGLISH)
+        return simpleDateFormat.format(number*1000L)
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
