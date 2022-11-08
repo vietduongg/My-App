@@ -1,5 +1,6 @@
 package meol.app.myapp.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,17 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.ceil
 
-class RecyclerViewAdapter(private val weatherApiList: List<ListItem>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewAdapter(private var weatherApiList: MutableList<ListItem> = mutableListOf()) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
 
     override fun getItemCount(): Int {
+        Log.d("SIZE", "SOS + kasdakdaw: ${weatherApiList.size}")
        return weatherApiList.size
+    }
+
+    fun setWeatherList(listWeatherItem: kotlin.collections.List<ListItem>){
+        this.weatherApiList.clear()
+        this.weatherApiList.addAll(listWeatherItem)
+        println("JJ: " + this.weatherApiList.size)
     }
 
     //create new view
